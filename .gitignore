@@ -1,0 +1,70 @@
+# Ignore all .idea folder files (PHPStorm/IntelliJ IDEA)
+.idea/
+
+# Symfony environment configuration
+/.env
+/.env.local
+/.env.dev
+/.env.local.php
+/.env.*.local
+
+# Symfony production secrets
+/config/secrets/prod/prod.decrypt.private.php
+
+# Symfony asset bundles and logs
+/public/bundles/
+/var/
+!var/.gitkeep # Keep the var/ directory in version control if needed
+
+# Vendor dependencies (Composer)
+/vendor/
+
+# PHPStan configuration
+phpstan.neon
+phpstan.neon.dist
+
+# PHPUnit
+/phpunit.xml
+/phpunit.xml.dist
+
+# Cache and logs (Symfony and general PHP)
+/var/cache/
+/var/logs/
+var/sessions/
+!var/log/.gitkeep
+
+# Generated files and directories
+/public/build/
+/node_modules/
+/build/
+
+# Composer files
+/composer.lock
+/.composer/
+
+# IDE specific files
+/.idea/
+/*.iml
+/vscode/
+/nbproject/
+
+# Temporary and backup files
+*.swp
+*.bak
+*.tmp
+*.~*
+*.log
+.DS_Store
+Thumbs.db
+
+# Docker and deployment
+/.docker/
+/.dockerignore
+/.env.docker
+.docker-compose*
+/docker-compose*
+
+# Miscellaneous
+/.phpunit.result.cache
+/.php_cs.cache
+coverage/
