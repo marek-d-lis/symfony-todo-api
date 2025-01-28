@@ -28,8 +28,8 @@ jobs:
       # Create .env file from secrets
       - name: Create .env file
         run: |
-          echo "APP_ENV=prod" >> .env
-          echo "DATABASE_URL= >> .env
+          echo "APP_ENV=test" >> .env
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
         
       # Install Composer dependencies
       - name: Install Dependencies
