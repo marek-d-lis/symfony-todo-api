@@ -1,51 +1,101 @@
-# Symfony Docker
+# TODO API
 
-A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony](https://symfony.com) web framework,
-with [FrankenPHP](https://frankenphp.dev) and [Caddy](https://caddyserver.com/) inside!
-
-![CI](https://github.com/dunglas/symfony-docker/workflows/CI/badge.svg)
+A simple TODO API built with Symfony, powered by Docker, and leveraging FrankenPHP with Caddy for optimized performance.
 
 ## Getting Started
 
-1. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/) (v2.10+)
-2. Run `docker compose build --no-cache` to build fresh images
-3. Run `docker compose up --pull always -d --wait` to set up and start a fresh Symfony project
-4. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
-5. Run `docker compose down --remove-orphans` to stop the Docker containers.
+### Prerequisites
+
+- [Docker Compose](https://docs.docker.com/compose/install/) (v2.10+)
+- [Symfony CLI](https://symfony.com/download) (optional, but useful for development)
+
+### Installation & Setup
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/marek-d-lis/symfony-todo-api.git
+   cd symfony-todo-api
+   ```
+
+2. Build the Docker images:
+   ```sh
+   docker compose build --no-cache
+   ```
+
+3. Start the application:
+   ```sh
+   docker compose up -d --wait
+   ```
+
+4. Open `https://localhost` in your browser and accept the auto-generated TLS certificate.
+
+5. Stop the application when done:
+   ```sh
+   docker compose down --remove-orphans
+   ```
+
+## API Endpoints
+
+The TODO API exposes the following endpoints:
+
+### Tasks
+
+- **Get a single task**: `GET /api/todos/{id}`
+- **Get all tasks**: `GET /api/todos`
+- **Create a task**: `POST /api/todos`
+- **Update a task**: `PUT /api/todos/{id}`
+- **Delete a task**: `DELETE /api/todos/{id}`
+
+### Example Request
+
+```sh
+curl -X GET https://localhost/api/todos/1 -H "Accept: application/json"
+```
+
+## API Documentation
+
+This project includes automatically generated API documentation using [NelmioApiDocBundle](https://symfony.com/bundles/NelmioApiDocBundle/current/index.html).
+
+To view the API documentation, navigate to:
+```
+https://localhost/api/doc
+```
 
 ## Features
 
-* Production, development and CI ready
-* Just 1 service by default
-* Blazing-fast performance thanks to [the worker mode of FrankenPHP](https://github.com/dunglas/frankenphp/blob/main/docs/worker.md) (automatically enabled in prod mode)
-* [Installation of extra Docker Compose services](docs/extra-services.md) with Symfony Flex
-* Automatic HTTPS (in dev and prod)
-* HTTP/3 and [Early Hints](https://symfony.com/blog/new-in-symfony-6-3-early-hints) support
-* Real-time messaging thanks to a built-in [Mercure hub](https://symfony.com/doc/current/mercure.html)
-* [Vulcain](https://vulcain.rocks) support
-* Native [XDebug](docs/xdebug.md) integration
-* Super-readable configuration
+- Fully containerized with Docker
+- Automatic HTTPS (dev & prod)
+- HTTP/3 and Early Hints support
+- Symfony Messenger for CQRS pattern
+- PostgreSQL as default database (easily switchable to MySQL)
+- XDebug integration for debugging
 
-**Enjoy!**
+## Development
 
-## Docs
+1. Install dependencies:
+   ```sh
+   docker compose exec php composer install
+   ```
 
-1. [Options available](docs/options.md)
-2. [Using Symfony Docker with an existing project](docs/existing-project.md)
-3. [Support for extra services](docs/extra-services.md)
-4. [Deploying in production](docs/production.md)
-5. [Debugging with Xdebug](docs/xdebug.md)
-6. [TLS Certificates](docs/tls.md)
-7. [Using MySQL instead of PostgreSQL](docs/mysql.md)
-8. [Using Alpine Linux instead of Debian](docs/alpine.md)
-9. [Using a Makefile](docs/makefile.md)
-10. [Updating the template](docs/updating.md)
-11. [Troubleshooting](docs/troubleshooting.md)
+2. Run database migrations:
+   ```sh
+   docker compose exec php bin/console doctrine:migrations:migrate
+   ```
+
+3. Run tests:
+   ```sh
+   docker compose exec php bin/phpunit
+   ```
+
+## Deployment
+
+For production deployment, see [the official Symfony Docker documentation](https://github.com/dunglas/symfony-docker).
 
 ## License
 
-Symfony Docker is available under the MIT License.
+This project is available under the MIT License.
 
-## Credits
+## Contributors
 
-Created by [Kévin Dunglas](https://dunglas.dev), co-maintained by [Maxime Helias](https://twitter.com/maxhelias) and sponsored by [Les-Tilleuls.coop](https://les-tilleuls.coop).
+Maintained by [Marek Lis](https://github.com/marek-d-lis).
+

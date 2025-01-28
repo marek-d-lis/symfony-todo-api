@@ -2,10 +2,10 @@
 
 namespace App\Application\Query\Handlers;
 
+use App\Application\Exception\TodoNotFoundException;
 use App\Application\Query\GetTodoByIdQuery;
 use App\Entity\Todo;
 use App\Repository\TodoRepository;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
@@ -20,7 +20,7 @@ readonly class GetTodoByIdHandler
     {
         $todo = $this->todoRepository->find($query->getId());
         if (!$todo) {
-            throw new NotFoundHttpException('Todo not found');
+            throw new TodoNotFoundException($query->getId());
         }
 
         return $todo;

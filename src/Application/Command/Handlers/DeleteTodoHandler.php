@@ -3,9 +3,9 @@
 namespace App\Application\Command\Handlers;
 
 use App\Application\Command\DeleteTodoCommand;
+use App\Application\Exception\TodoNotFoundException;
 use App\Repository\TodoRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
@@ -21,7 +21,7 @@ readonly class DeleteTodoHandler
     {
         $todo = $this->todoRepository->find($command->getId());
         if (!$todo) {
-            throw new NotFoundHttpException('Todo not found');
+            throw new TodoNotFoundException($command->getId());
         }
 
         $this->entityManager->remove($todo);

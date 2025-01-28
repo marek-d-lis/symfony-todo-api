@@ -3,10 +3,10 @@
 namespace App\Application\Command\Handlers;
 
 use App\Application\Command\UpdateTodoCommand;
+use App\Application\Exception\TodoNotFoundException;
 use App\Entity\Todo;
 use App\Repository\TodoRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
@@ -22,7 +22,7 @@ readonly class UpdateTodoHandler
     {
         $todo = $this->todoRepository->find($command->getId());
         if (!$todo) {
-            throw new NotFoundHttpException('Todo not found');
+            throw new TodoNotFoundException($command->getId());
         }
 
         $todo->setTitle($command->getTitle());

@@ -20,7 +20,9 @@ final class Version20250115204118 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE todo (id SERIAL NOT NULL, title VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, completed BOOLEAN NOT NULL, PRIMARY KEY(id))');
+        $this->addSql(
+            'CREATE TABLE todo (id SERIAL NOT NULL, title VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, completed BOOLEAN NOT NULL, PRIMARY KEY(id))'
+        );
     }
 
     public function down(Schema $schema): void
