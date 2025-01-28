@@ -24,15 +24,15 @@ jobs:
           php-version: '8.3'
           extensions: mbstring, pdo, pdo_mysql
           coverage: none
-      
-      # Install Composer dependencies
-      - name: Install Dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
 
       # Create .env file from secrets
       - name: Create .env file
         run: echo "APP_ENV=test" >> .env
       
+      # Install Composer dependencies
+      - name: Install Dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+
       # Run PHPStan
       - name: Run PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=512M
