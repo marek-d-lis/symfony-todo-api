@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Application\Query\GetTodoByIdQuery;
+use App\Entity\Todo;
 use App\Transformer\ApiResponseTransformer;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -38,6 +39,7 @@ readonly class GetTodoController
             throw new RuntimeException('No handler was able to handle GetTodoByIdQuery');
         }
 
+        /** @var Todo $todo */
         $todo = $handledStamp->getResult();
 
         return JsonResponse::fromJsonString(

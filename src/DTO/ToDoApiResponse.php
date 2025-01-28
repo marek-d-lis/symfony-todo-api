@@ -9,7 +9,7 @@ readonly class ToDoApiResponse
 
     public function __construct(
         #[Groups(['todo:read'])]
-        private int $id,
+        private string $id,
 
         #[Groups(['todo:read', 'todo:write'])]
         private string $title,
@@ -19,7 +19,7 @@ readonly class ToDoApiResponse
     ) {
     }
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }

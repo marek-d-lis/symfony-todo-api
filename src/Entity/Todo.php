@@ -4,15 +4,14 @@ namespace App\Entity;
 
 use App\Repository\TodoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: TodoRepository::class)]
 class Todo
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    /** @phpstan-ignore-next-line */
-    private ?int $id = null;
+    #[ORM\Column(type: 'uuid', unique: true)]
+    private Uuid $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $title;
@@ -23,7 +22,12 @@ class Todo
     #[ORM\Column(type: 'boolean')]
     private bool $completed = false;
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $this->id = Uuid::v4();
+    }
+
+    public function getId(): Uuid
     {
         return $this->id;
     }
