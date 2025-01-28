@@ -25,6 +25,9 @@ jobs:
           extensions: mbstring, pdo, pdo_mysql
           coverage: none
 
+      - name: Warm up Symfony cache
+        run: php bin/console cache:warmup --env=test
+
       # Create .env file from secrets
       - name: Create .env file
         run: |
