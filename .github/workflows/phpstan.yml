@@ -28,6 +28,10 @@ jobs:
       # Install Composer dependencies
       - name: Install Dependencies
         run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+
+      # Create .env file from secrets
+      - name: Create .env file
+        run: echo "APP_ENV=test" >> .env
       
       # Run PHPStan
       - name: Run PHPStan
