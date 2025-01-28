@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -9,7 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * @extends ServiceEntityRepository<Todo>
  */
-class TodoRepository extends ServiceEntityRepository
+final class TodoRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

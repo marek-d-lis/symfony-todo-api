@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Application\Command;
 
-readonly class CreateTodoCommand
+final readonly class CreateTodoCommand
 {
     public function __construct(
         private string $title,

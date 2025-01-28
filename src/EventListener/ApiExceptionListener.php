@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace App\EventListener;
 
 use App\Application\Exception\TodoNotFoundException;
@@ -8,7 +9,7 @@ use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 
-class ApiExceptionListener
+final class ApiExceptionListener
 {
     public function onKernelException(ExceptionEvent $event): void
     {

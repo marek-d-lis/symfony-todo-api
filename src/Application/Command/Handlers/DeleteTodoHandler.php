@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Application\Command\Handlers;
 
@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-readonly class DeleteTodoHandler
+final readonly class DeleteTodoHandler
 {
     public function __construct(
         private EntityManagerInterface $entityManager,

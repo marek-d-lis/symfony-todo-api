@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Application\Query;
 
-readonly class GetTodoByIdQuery
+final readonly class GetTodoByIdQuery
 {
     public function __construct(
         private int $id

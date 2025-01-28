@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Application\Command;
 
-readonly class UpdateTodoCommand
+final readonly class UpdateTodoCommand
 {
     public function __construct(
         private int $id,

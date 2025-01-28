@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Application\Query\Handlers;
 
@@ -8,7 +8,7 @@ use App\Repository\TodoRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-readonly class GetAllTodosHandler
+final readonly class GetAllTodosHandler
 {
     public function __construct(
         private TodoRepository $todoRepository

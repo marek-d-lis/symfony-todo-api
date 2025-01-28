@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 #[AsController]
 #[Route('/api/todos/{id}', name: 'api_todos_delete', methods: ['DELETE'])]
-readonly class DeleteTodoController
+final readonly class DeleteTodoController
 {
     public function __construct(
         private MessageBusInterface $commandBus

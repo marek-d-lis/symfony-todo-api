@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Application\Command\Handlers;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-readonly class CreateTodoHandler
+final readonly class CreateTodoHandler
 {
     public function __construct(
         private EntityManagerInterface $entityManager

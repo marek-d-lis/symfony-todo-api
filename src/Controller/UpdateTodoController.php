@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 #[AsController]
 #[Route('/api/todos/{id}', name: 'api_todos_update', methods: ['PUT'])]
-readonly class UpdateTodoController
+final readonly class UpdateTodoController
 {
     public function __construct(
         private MessageBusInterface $commandBus,

@@ -1,7 +1,41 @@
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+
 parameters:
+    # Set the PHPStan level (9 is the strictest)
     level: 9
+
+    # Directories or files to analyze
     paths:
         - bin/
         - config/
         - public/
         - src/
+
+    # Symfony-specific settings
+    symfony:
+        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
+
+    # Scan additional directories for better autoloading
+    scanDirectories:
+        - var/cache/dev/Symfony/Config
+
+    # Exclude specific files or folders from analysis
+    excludePaths:
+        - var/
+        - src/Migrations/*
+
+    # Detect and warn about unmatched ignored errors
+    reportUnmatchedIgnoredErrors: true
+
+
+rules:
+    # Rules from the Ergebnis package
+    - Ergebnis\PHPStan\Rules\Expressions\NoCompactRule
+    - Ergebnis\PHPStan\Rules\Expressions\NoErrorSuppressionRule
+    - Ergebnis\PHPStan\Rules\Expressions\NoEvalRule
+    - Ergebnis\PHPStan\Rules\Expressions\NoIssetRule
+    - Ergebnis\PHPStan\Rules\Files\DeclareStrictTypesRule
+    - Ergebnis\PHPStan\Rules\Statements\NoSwitchRule

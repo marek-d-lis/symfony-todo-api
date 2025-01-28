@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 #[AsController]
 #[Route('/api/todos', name: 'api_todos_create', methods: ['POST'])]
-readonly class CreateTodoController
+final readonly class CreateTodoController
 {
     public function __construct(
         private MessageBusInterface $commandBus,

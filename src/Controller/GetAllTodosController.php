@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 #[AsController]
 #[Route('/api/todos', name: 'api_todos_list_all', methods: ['GET'])]
-readonly class GetAllTodosController
+final readonly class GetAllTodosController
 {
     public function __construct(
         private MessageBusInterface $queryBus,
