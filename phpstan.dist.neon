@@ -14,10 +14,6 @@ parameters:
         - public/
         - src/
 
-    # Symfony-specific settings
-    symfony:
-        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
-
     # Scan additional directories for better autoloading
     scanDirectories:
         - var/cache/dev/Symfony/Config
