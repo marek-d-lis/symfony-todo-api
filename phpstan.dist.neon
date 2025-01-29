@@ -2,6 +2,7 @@ includes:
     - vendor/phpstan/phpstan-doctrine/extension.neon
     - vendor/phpstan/phpstan-symfony/extension.neon
     - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/marek-d-lis/phpstan-symfony-rules/extension.neon
 
 parameters:
     # Set the PHPStan level (9 is the strictest)
@@ -39,3 +40,5 @@ rules:
     - Ergebnis\PHPStan\Rules\Expressions\NoIssetRule
     - Ergebnis\PHPStan\Rules\Files\DeclareStrictTypesRule
     - Ergebnis\PHPStan\Rules\Statements\NoSwitchRule
+    - MarekLis\PHPStanSymfonyRules\Rules\NoDumpRule
+    - MarekLis\PHPStanSymfonyRules\Rules\NoDieRule
